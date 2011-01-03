@@ -1,0 +1,6 @@
+- title "Artists <span>(#{Artist.all.count})</span>"
+
+
+%ul#artists
+  - @artists.map do |artist|
+    - nav_link_to artist.name, "/artists/#{artist.id}"

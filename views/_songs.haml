@@ -1,0 +1,5 @@
+%ul#songs
+  - unless @songs.anil?
+    - @songs.each do |song|
+      %li
+        - link_to "#{song.artist.name} - #{song.album} - #{song.title}", "/songs/#{song.id}"

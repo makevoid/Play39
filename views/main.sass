@@ -1,0 +1,236 @@
+// mixins
+
+=border-radius($radius)
+  border-radius: $radius
+  //behavior: url('/border-radius.htc')
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+  
+=border-radius-bottom($radius)
+  border-bottom-left-radius: $radius
+  border-bottom-right-radius: $radius
+  //behavior: url('/border-radius.htc')
+  -moz-border-radius-bottomleft: $radius
+  -moz-border-radius-bottomright: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -webkit-border-bottom-right-radius: $radius
+
+=border-radius-top($radius)
+  border-top-left-radius: $radius
+  border-top-right-radius: $radius
+  //behavior: url('/border-radius.htc')
+  -moz-border-radius-topleft: $radius
+  -moz-border-radius-topright: $radius
+  -webkit-border-top-left-radius: $radius
+  -webkit-border-top-right-radius: $radius
+  
+=simple_gradient($start_color, $end_color)
+  background: $start_color
+  background-image: -moz-linear-gradient(top, $start_color 0%, $end_color 100%) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$end_color))
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start_color', endColorstr='$end_color',GradientType=0 )
+  
+=simple_gradient_tri($start, $stop, $end)
+  background: $start
+  background-image: -moz-linear-gradient(top, $start 0%, $stop 50%, $end 100%) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(50%,$stop), color-stop(100%,$end))
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$end',GradientType=0 )
+
+
+=simple_gradient_tri_half($start, $stop, $end, $p_stop)
+  $p_stop1: 50%-$p_stop
+  $p_stop2: 50%+$p_stop
+  $stop1: $stop
+  $stop2: $stop
+  background: $start
+  background-image: -moz-linear-gradient(top, $start 0%, $stop1 $p_stop1, $stop2 $p_stop2, $end 100%) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop($p_stop1,$stop1), color-stop($p_stop2,$stop2), color-stop(100%,$end))
+
+=gradient_tri($start, $stop, $end, $perc1, $perc2, $perc3)
+  background: $start
+  background-image: -moz-linear-gradient(top, $start $perc1, $stop $perc2, $end $perc3) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop($perc1,$start), color-stop($perc2,$stop), color-stop($perc3,$end))
+
+=simple_gradient_half($start_color, $stop_color, $restart_color, $end_color)
+  background: $end_color
+  background-image: -moz-linear-gradient(top, $start_color 0%, $stop_color 50%, $restart_color 51%, $end_color 100%)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(50%,$stop_color), color-stop(51%,$restart_color), color-stop(100%,$end_color))
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start_color', endColorstr='$end_color',GradientType=0 )
+
+=box-shadow($x, $y, $radius, $color)
+  -moz-box-shadow: $x $y $radius $color
+  -webkit-box-shadow: $x $y $radius $color
+  box-shadow: $x $y $radius $color
+
+// clearfix
+
+*, html, body
+  margin: 0
+  padding: 0
+
+html, body 
+  height: 100%     
+  max-height: 100%
+  
+img
+  border: 0
+
+ul 
+  list-style-type: none
+
+li
+  display: inline
+
+.clear
+  clear: both
+
+a 
+  text-decoration: none
+  
+  
+// style
+
+$bg: #BBB
+$bg_cont: #FFF
+$txt: #222
+$main: #999
+$alt: #666
+$links: #444
+
+@font-face
+  font-family: Guardian
+  src: url( /fonts/guardian.eot ) /* IE 6,7,8 */  
+  
+@font-face
+  font-family: Guardian
+  src: url('/fonts/guardian.otf')
+  
+body
+  background: $bg
+  font-family: sans-serif, Helvetica, Arial, Verdana
+  color: $txt
+  font-size: 120%
+
+a
+  color: $links
+a:hover
+  color: $links + #111
+  
+=container_width
+  width: 90%  
+  min-width: 800px
+  
+#container
+  +container_width
+  margin: 0 auto 40px 
+  padding-top: 30px
+  background: #FFF
+  padding: 20px 20px 40px
+  border: 1px solid #333
+  border-top: none
+  +box_shadow(3px, 3px, 8px, #777)
+  +border-radius-bottom(4px)
+  min-height: 400px
+  
+p 
+  font-size: 0.9em
+  
+h2 span
+  font-weight: normal
+  font-size: 0.8em
+  
+h1 
+  float: left
+nav
+  margin: 54px 0 0 20px 
+  float: left
+    
+form
+  input
+    padding: 3px 8px
+    font-size: 1.2em 
+  input.submit
+    margin: 10px
+    
+
+$orange: #EDA54C
+$purple: #A95FED
+$green:  #10BB00
+$blue:   #005DBA
+$lgreen: #10BB00 + #333
+$lblue:  #005DBA + #333
+
+
+a 
+  color: $green - #444
+a:hover
+  color: $green
+
+=button_style_li
+  margin: 5px
+=button_style
+  padding: 4px 9px
+  background: #EEE
+  text-shadow: -1px -1px 3px #FFF,  -1px -1px 2px #FFF, 0px 0px 1px #FFF
+  font-size: 0.95em
+  cursor: pointer
+  +border_radius(8px)
+  font-weight: bold
+  //+simple_gradient_tri_half($orange, #FFF, $purple, 20%)
+  +simple_gradient($green+#222, #FFF)
+  border: 1px solid #444
+  +box_shadow(0px, 0px, 2px, #FFF)
+=button_style_hover        
+  background: #222
+  border: 1px solid #999
+  +simple_gradient($green+#333, $green+#DDD)
+  +box_shadow(0px, 0px, 10px, #FFF)
+  text-shadow: 0px 0px 1px #222, 0px 0px 2px #222, 0px 0px 3px #222
+  color: #FFF
+  //+simple_gradient_tri_half($lgreen, #FFF, $lblue,  10%)
+    
+#reindex, nav li a
+  +button_style
+nav li
+  +button_style_li
+#reindex:hover, nav li:hover a
+  +button_style_hover
+#reindex:active, nav li:active a
+  //
+#reindex 
+  margin-top: 10px
+
+$h_col: #222
+
+header
+  +simple_gradient($blue+#DDD, $green)
+header
+  border-bottom: 3px solid #444
+  div#header
+    +container_width
+    margin: 0 auto
+  
+h1 a
+  font-size: 1.7em
+  text-shadow: -1px -1px $h_col, -2px -2px $h_col, -3px -3px $h_col, -4px -4px $h_col, 0px 0px 1px $h_col, 1px 1px 1px $h_col, 0px 1px 1px $h_col, 1px 0px 1px $h_col
+  color: #EEE
+h1 a span
+  font-size: 1.3em
+h1 a span.three
+  color: $green+ #DDD
+h1 a span.nine
+  color: $blue+ #DDD
+h1 a span.nine  
+  //
+h1 a:hover
+  color: #FFF
+h1 a:hover 
+  span
+    color: #FFF
+  span.three
+    color: $green+ #AAA
+  span.nine
+    color: $blue+ #AAA
+    
+#container ul li
+  display: block  

@@ -1,0 +1,9 @@
+- title "Settings"
+
+%form{ action: "/reindex", method: "post"}
+  %input{ type: "submit", value: "re-index", class: "submit" }
+
+%form{ action: "/confs", method: "post"}
+  %label{ for: "path" } Path:
+  %input{ name: "path", type: "text", id: "path" }
+  %input{ type: "submit", value: "edit", class: "submit" }
