@@ -1,7 +1,18 @@
 # Share39
-## sinatra app to share and stream mp3s 
+## Personal music sharing server 
+### (aka) sinatra app to share and stream mp3s 
 others formats will be added soon...
 
+
+## launching
+
+thin -C config/thin.yml start
+shotgun --server=thin --port=3939
+
+shotgun --server=thin --port=3939 -o local_ip        (ifconfig/ipconfig to get it)
+shotgun --server=thin --port=3939 -o 192.168.10.212
+
+---
 
 ### note to myself ^^
 

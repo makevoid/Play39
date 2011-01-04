@@ -10,7 +10,7 @@
     %meta{ name: "author", content: "" }    
     -# %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %script{ src: "/js/modernizr.js", type: "text/javascript" }
-  %body  
+  %body{ class: request.path.split("/")[1] }
     %header
       #header
         %h1
@@ -18,11 +18,15 @@
         %nav
           - nav_link_to "Songs",    "/songs"
           - nav_link_to "Artists",  "/artists"
-          - nav_link_to "Search",   "/songs/search" # TODO: move to a form in all the pages (layout)
+          - nav_link_to "Stats",   "/stats" # TODO: move to a form in all the pages (layout)
           - nav_link_to "Settings", "/settings"
         .clear
     #container
+      = haml :"_flashes"
       #content
+        %form{ action: "/songs/search", method: "get", id: "search" }
+          %input{ name: "query", type: "text", value: params[:query] }
+          %input{ type: "submit", value: "Search", class: "submit" }
         = yield
       %footer  
     %script{ src: "/js/jquery.js", type: "text/javascript" }

@@ -1,0 +1,24 @@
+%ul#paths
+  - unless @paths.anil?
+    - @paths.each do |path|
+      %li
+        .path= path.name
+        %form{ action: "/paths/#{path.id}", method: "post" }
+          %input{ name: "_method", value: "delete",  type: "hidden" }
+          %input{ type: "submit", onclick: "if(!confirm('Are you sure you want to delete this path?')){ return false; }",  value: "X", class: "del" }
+  - else
+    %li No paths added yet... Add one now!
+        
+  %li
+    %form{ action: "/paths", method: "post" }
+      %input{ name: "path", type: "text", value: params[:path], id: "new_path" }  
+      %input{ type: "submit", value: "Add" }
+    
+#default_paths  
+  :markdown
+    #### default Music Folder paths
+
+    - osX: ~/Music/iTunes/iTunes Music
+    - osX (ext volume): /Volumes/DRIVE/Music/iTunes/iTunes Music
+    - Win: C:/Document and Settings/Music
+    - Ubuntu: ~/Music

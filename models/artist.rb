@@ -5,5 +5,6 @@ class Artist
   property :name, String, length: 200
   
   has n, :shared_files
-  has n, :songs
+  
+  alias :songs :shared_files
 end

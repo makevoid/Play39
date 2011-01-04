@@ -1,19 +1,22 @@
-set :haml, { :format => :html5 }
-require 'rack-flash'
-enable :sessions
-use Rack::Flash
+require 'bundler'
+require 'bundler/setup'
+
+app_path = File.expand_path "../../", __FILE__
+
 
 require 'dm-core'
 require 'dm-migrations'
 require 'dm-validations'
 require 'dm-sqlite-adapter'
 
-DataMapper.setup :default, "sqlite://#{APP_PATH}/db/share39.sqlite"
+DataMapper.setup :default, "sqlite://#{app_path}/db/share39.sqlite"
 
 
-Dir.glob("#{APP_PATH}/models/*").each do |model|
+Dir.glob("#{app_path}/models/*").each do |model|
   require model
 end
 
-require 'voidtools'
-include Voidtools::Sinatra::ViewHelpers
+if defined? Sinatra
+  require 'voidtools'
+  include Voidtools::Sinatra::ViewHelpers
+end

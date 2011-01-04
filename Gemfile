@@ -4,6 +4,8 @@ gem 'haml'
 gem 'sinatra'
 gem 'rack-flash'
 
+gem "bluecloth"
+
 gem "dm-core"
 gem "dm-migrations"
 gem "dm-validations"

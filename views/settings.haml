@@ -1,9 +1,20 @@
 - title "Settings"
 
+%h6 #{SharedFile.all.count} files indexeds
 %form{ action: "/reindex", method: "post"}
   %input{ type: "submit", value: "re-index", class: "submit" }
 
+%h3 Paths
+
+= haml :"_paths"
+
+
+%h3 Password protection
+
+- @status = "disabled"
+%h5 Password protection is currently #{@status}
+
 %form{ action: "/confs", method: "post"}
-  %label{ for: "path" } Path:
-  %input{ name: "path", type: "text", id: "path" }
-  %input{ type: "submit", value: "edit", class: "submit" }
+  %label{ for: "pass" } Password
+  %input{ name: "password", type: "password", id: "pass" }
+  %input{ type: "submit", value: "Edit", class: "submit" }

@@ -1,5 +1,28 @@
-%ul#songs
+%table#songs{ cellspacing: 0 }
+  %tr
+    %th.artist Artist
+    %th.album Album
+    %th.title Title
+    %th.time Time
+    %th.genre Genre
+    %th.plays Plays
+    
   - unless @songs.anil?
-    - @songs.each do |song|
-      %li
-        - link_to "#{song.artist.name} - #{song.album} - #{song.title}", "/songs/#{song.id}"
+    - @songs.each_with_index do |song, i|
+      %tr{ class: "#{ i%2 == 0 ? "even" : "odd" }" }
+        - path = "/songs/#{song.id}"
+        %td
+          - link_to song.artist.name, path 
+        %td
+          - link_to song.album, path
+        %td
+          - link_to song.title, path
+        %td
+          - link_to song.time, path
+        %td
+          - link_to song.genre, path
+        %td
+          - link_to song.plays, path
+  - else
+    %tr
+      %td.no{ colspan: 6 } No song found.
