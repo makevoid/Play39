@@ -44,6 +44,8 @@ class Share39 < Sinatra::Base
   require 'rack-flash'
   enable :sessions
   use Rack::Flash
+  
+  use Rack::MethodOverride # put and delete requests
 
   module IncludeInVoidtools
     def title(text)

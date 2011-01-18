@@ -25,9 +25,6 @@ others formats will be added soon...
 thin -C config/thin.yml start
 
 DEV
-shotgun --server=thin --port=3939
-
-shotgun --server=thin --port=3939 -o local_ip        (ifconfig/ipconfig to get it)
 shotgun --server=thin --port=3939 -o 0.0.0.0
 
 ---

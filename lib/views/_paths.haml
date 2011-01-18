@@ -4,7 +4,7 @@
       %li
         .path= path.name
         %form{ action: "/paths/#{path.id}", method: "post" }
-          %input{ name: "_method", value: "delete",  type: "hidden" }
+          %input{ type: "hidden", name: "_method", value: "delete" }
           %input{ type: "submit", onclick: "if(!confirm('Are you sure you want to delete this path?')){ return false; }",  value: "X", class: "del" }
   - else
     %li No paths added yet... Add one now!
