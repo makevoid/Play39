@@ -15,6 +15,8 @@ others formats will be added soon...
 - brew install id3lib
 
 - bundle install
+- rake install
+- cd lib; thin -C config/thin.yml start
 
 
 ## launching
