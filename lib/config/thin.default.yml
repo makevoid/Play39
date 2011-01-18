@@ -1,7 +1,7 @@
 ---
   environment: production
   chdir: HOME/Sites/share39/lib
-  address: 192.168.10.212
+  address: 0.0.0.0
   port: 3939
   pid: HOME/Sites/share39/lib/tmp/thin.pid
   rackup: HOME/Sites/share39/lib/config.ru
