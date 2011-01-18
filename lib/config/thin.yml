@@ -1,0 +1,12 @@
+---
+  environment: production
+  chdir: $HOME/Sites/share39/lib
+  address: 192.168.10.212
+  port: 3939
+  pid: $HOME/Sites/share39/lib/tmp/thin.pid
+  rackup: $HOME/Sites/share39/lib/config.ru
+  log: $HOME/Sites/share39/lib/log/thin.log
+  max_conns: 1024
+  timeout: 30
+  max_persistent_conns: 512
+  daemonize: false

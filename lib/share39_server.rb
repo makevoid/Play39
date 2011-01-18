@@ -1,4 +1,5 @@
 require 'haml'
+require 'sass'
 require 'sinatra/base'
 
 path = File.expand_path "../", __FILE__
@@ -83,8 +84,7 @@ class Share39 < Sinatra::Base
     path = MAIN_CSS
     file_exist = File.exist? path
     if file_exist
-    sass = ""
-      file = File.read path 
+      sass = File.read path 
     else
       File.open(path, "w") do |f|
         sass = sass(:main)

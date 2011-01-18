@@ -1,0 +1,7 @@
+require 'bundler'
+require 'bundler/setup'
+
+desc "test task"
+task :test_task do
+  puts "this is a test task"
+end

@@ -1,7 +1,0 @@
-- title "Stats"
-
-%ul#stats
-  - unless @stats.anil?
-    - @stats.each do |stat|
-      %li
-        - link_to "#{stat.ip} listened to '#{stat.song.album} - #{stat.song.title}'"

@@ -3,7 +3,8 @@
 %h6 #{SharedFile.all.count} files indexeds
 %form{ action: "/reindex", method: "post"}
   %input{ type: "submit", value: "re-index", class: "submit" }
-
+  
+  
 %h3 Paths
 
 = haml :"_paths"
