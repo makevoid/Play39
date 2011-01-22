@@ -15,7 +15,7 @@ class Indexer
         Path.create(name: "/Volumes/backup/Music/iTunes/iTunes\ Music")
       end
     end
-    Stats.all.each{ |f| f.destroy }
+    Stat.all.each{ |f| f.destroy }
     SharedFile.all.each{ |f| f.destroy }
     Artist.all.each{ |f| f.destroy }
     Path.all.each do |path|
