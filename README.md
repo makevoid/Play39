@@ -35,6 +35,13 @@ gem build share39.gemspec; gem install share39-0.1.1.gem
 gem install share39-0.1.1
 irb
 
+### TODO:
+
+- playlist
+- password protect & give access through email
+- album artworks
+- macruby app to install / configure / run  all the big stuff :p
+
 ---
 
 oops, random toughts down there: 
