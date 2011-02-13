@@ -9,8 +9,8 @@
     
   - unless @songs.anil?
     - @songs.each_with_index do |song, i|
-      %tr{ class: "#{ i%2 == 0 ? "even" : "odd" }" }
-        - path = "/songs/#{song.id}"
+      - path = "/songs/#{song.id}"
+      %tr{ class: "#{ i%2 == 0 ? "even" : "odd" }", :"data-url" => path }
         %td
           - link_to song.artist.name, path 
         %td

@@ -9,4 +9,4 @@
   max_conns: 1024
   timeout: 30
   max_persistent_conns: 512
-  daemonize: false
+  daemonize: true
