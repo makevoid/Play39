@@ -1,6 +1,6 @@
 
 class Share39
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 end
 
 `cp #{Gem.path.first}/gems/share39-#{Share39::VERSION}/bin/share39 #{Gem.path.first}/bin`

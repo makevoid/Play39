@@ -1,0 +1,12 @@
+---
+  environment: production
+  chdir: /Users/makevoid/Sites/share39/lib
+  address: 0.0.0.0
+  port: 3939
+  pid: /Users/makevoid/Sites/share39/lib/tmp/thin.pid
+  rackup: /Users/makevoid/Sites/share39/lib/config.ru
+  log: /Users/makevoid/Sites/share39/lib/log/thin.log
+  max_conns: 1024
+  timeout: 30
+  max_persistent_conns: 512
+  daemonize: false

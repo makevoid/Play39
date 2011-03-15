@@ -3,3 +3,4 @@
 .sqlite
 Gemfile.lock
 *.gem
+.pid

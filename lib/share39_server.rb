@@ -44,9 +44,12 @@ class Share39 < Sinatra::Base
   require 'rack-flash'
   enable :sessions
   use Rack::Flash
+  use Rack::Static, :root => "#{APP_PATH}/public"
   
   use Rack::MethodOverride # put and delete requests
-
+  
+  MAIN_CSS = "#{APP_PATH}/public/css/main.css"
+  
   module IncludeInVoidtools
     def title(text)
       @title = text
@@ -54,10 +57,16 @@ class Share39 < Sinatra::Base
         haml_concat text
       end
     end
+    
+
   end
 
   include IncludeInVoidtools
-
+  def self.init_voidtools
+    `rm -f #{MAIN_CSS}` if ENV["RACK_ENV"] == "development"
+  end
+  init_voidtools
+  
 
 
   def halt_not_found
@@ -74,15 +83,13 @@ class Share39 < Sinatra::Base
   end
 
   # main
-  
-  MAIN_CSS = "#{APP_PATH}/public/css/main.css"
+  MAIN_CSS
   get "/" do
-    File.delete MAIN_CSS if File.mtime(MAIN_CSS) > File.mtime("#{APP_PATH}/views/main.sass")+1
+    #File.delete MAIN_CSS if File.mtime(MAIN_CSS) > File.mtime("#{APP_PATH}/views/main.sass")+1
     haml :index
   end
 
   get '/css/main.css' do
-    
     path = MAIN_CSS
     file_exist = File.exist? path
     if file_exist
