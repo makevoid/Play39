@@ -11,22 +11,22 @@ class Object
   #   @person ? @person.name : nil
   # vs
   #   @person.try(:name)
-  def try(method)
-    send method if respond_to? method
-  end
-  
+  # def try(method)
+  #   send method if respond_to? method
+  # end  
+          
   def anil?
     self.nil? || self == []
   end
-  
+              
   def blank?
     self.nil? || self == ''
   end
-  
+              
   def ton_i
     self.to_i unless self == ""
   end
-  
+              
   def log_errors_for(objects, &block)
     errs = objects.errors.map{ |e| e }
     unless errs == []
@@ -40,13 +40,18 @@ end
 class Share39 < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
-  set :haml, { :format => :html5 }
-  require 'rack-flash'
-  enable :sessions
-  use Rack::Flash
-  use Rack::Static, :root => "#{APP_PATH}/public"
+  # set :haml, { :format => :html5 }
+  # require 'rack-flash'
+  # enable :sessions
+  # use Rack::Flash
+  def flash
+    {}
+  end
+    
   
-  use Rack::MethodOverride # put and delete requests
+  # use Rack::Static, :root => "#{APP_PATH}/public"
+  
+  # use Rack::MethodOverride # put and delete requests
   
   MAIN_CSS = "#{APP_PATH}/public/css/main.css"
   
@@ -57,10 +62,8 @@ class Share39 < Sinatra::Base
         haml_concat text
       end
     end
-    
-
   end
-
+    
   include IncludeInVoidtools
   def self.init_voidtools
     `rm -f #{MAIN_CSS}` if ENV["RACK_ENV"] == "development"
@@ -107,12 +110,12 @@ class Share39 < Sinatra::Base
   # TODO: move into a rake task 
   
   get "/migrate" do
-    DataMapper.auto_migrate!
+    Models.migrate
     File.delete MAIN_CSS
     flash[:notice] = "DB migration complete!"
     redirect "/"
   end
-
+  
 end
 
 require "#{APP_PATH}/controllers/settings"

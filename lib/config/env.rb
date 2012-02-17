@@ -2,7 +2,7 @@ require 'bundler'
 require 'bundler/setup'
 
 app_path = File.expand_path "../../", __FILE__
-
+APP_PATH = app_path
 
 require 'dm-core'
 require 'dm-migrations'
@@ -19,4 +19,11 @@ end
 if defined? Sinatra
   require 'voidtools'
   include Voidtools::Sinatra::ViewHelpers
+end
+
+class Models
+  def self.migrate
+    `mkdir -p #{APP_PATH}/db`
+    DataMapper.auto_migrate!
+  end
 end

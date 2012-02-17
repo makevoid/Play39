@@ -4,3 +4,5 @@
 Gemfile.lock
 *.gem
 .pid
+.sass-cache
+*.sqlite

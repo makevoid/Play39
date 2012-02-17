@@ -1,8 +1,9 @@
-source "http://rubygems.org"
+source :rubygems
 
 gem 'haml'
+gem 'sass'
 gem 'sinatra'
-gem 'rack-flash'
+# gem 'rack-flash'
 
 gem "bluecloth"
 
@@ -17,3 +18,5 @@ gem "voidtools"
 # brew install id3lib
 # aptitude install libid3-dev
 gem "id3lib-ruby"
+
+# gem "thin"
